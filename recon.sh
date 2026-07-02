@@ -8,15 +8,17 @@ RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'
 CYAN='\033[0;36m'; BOLD='\033[1m'; DIM='\033[2m'; NC='\033[0m'
 WHITE='\033[1;37m'; PURPLE='\033[0;35m'
 
-# Global log helpers (used by recon_ext.sh)
+# Global log helpers (used by lib modules)
 log_info()    { echo -e "${CYAN}[*]${NC} $*"; }
 log_warn()    { echo -e "${YELLOW}[!]${NC} $*"; }
 log_error()   { echo -e "${RED}[-]${NC} $*"; }
 log_success() { echo -e "${GREEN}[+]${NC} $*"; }
 
-# shellcheck source=recon_ext.sh
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "${SCRIPT_DIR}/recon_ext.sh"
+# shellcheck source=lib/core.sh
+for _mod in core network service_enum dns_recon web screenshot report; do
+    source "${SCRIPT_DIR}/lib/${_mod}.sh"
+done
 
 TARGET=""
 OUTDIR=""
@@ -156,10 +158,12 @@ run_scan() {
         return 1
     fi
 
-    # Export globals for recon_ext.sh
+    # Export globals for lib modules
     # shellcheck disable=SC2034
     TARGET="$target"
+    # shellcheck disable=SC2034
     OUTDIR="$outdir"
+    # shellcheck disable=SC2034
     WORDLIST="$wordlist"
 
     log() {
