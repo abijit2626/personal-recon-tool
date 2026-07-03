@@ -1,5 +1,5 @@
 # shellcheck shell=bash
-# shellcheck source=../recon.sh
+# shellcheck source=../ghost.sh
 
 # =============================================================================
 # report.sh — self-contained HTML report generator
@@ -13,7 +13,7 @@ generate_html_report() {
     {
         cat <<HTML
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"><title>Recon Report: $target</title>
+<html><head><meta charset="utf-8"><title>Ghost Report: $target</title>
 <style>
 body{font-family:ui-monospace,Consolas,monospace;background:#0d1117;color:#c9d1d9;margin:2rem;}
 h1{color:#58a6ff;} h2{color:#79c0ff;border-bottom:1px solid #30363d;padding-bottom:.3rem;margin-top:2rem;}
@@ -22,7 +22,7 @@ pre{background:#161b22;padding:1rem;border-radius:6px;overflow-x:auto;white-spac
 .meta{color:#8b949e;font-size:.9em;}
 img{max-width:400px;border:1px solid #30363d;border-radius:4px;margin:.5rem;}
 </style></head><body>
-<h1>Recon Report — $target</h1>
+<h1>Ghost Report — $target</h1>
 <p class="meta">Generated $(date '+%Y-%m-%d %H:%M:%S')</p>
 HTML
 

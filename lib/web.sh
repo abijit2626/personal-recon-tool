@@ -1,5 +1,5 @@
 # shellcheck shell=bash
-# shellcheck source=../recon.sh
+# shellcheck source=../ghost.sh
 
 # =============================================================================
 # web.sh — web content discovery (dir-busting, archive URLs, nikto)

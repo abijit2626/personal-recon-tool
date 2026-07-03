@@ -1,5 +1,5 @@
 # shellcheck shell=bash
-# shellcheck source=../recon.sh
+# shellcheck source=../ghost.sh
 
 # =============================================================================
 # network.sh — advanced nmap phases (UDP, NSE vuln, TLS)

@@ -1,5 +1,5 @@
 # shellcheck shell=bash
-# shellcheck source=../recon.sh
+# shellcheck source=../ghost.sh
 
 # =============================================================================
 # dns_recon.sh — DNS enumeration and reverse DNS sweep

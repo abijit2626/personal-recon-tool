@@ -1,5 +1,5 @@
 # shellcheck shell=bash
-# shellcheck source=../recon.sh
+# shellcheck source=../ghost.sh
 
 # =============================================================================
 # service_enum.sh — service-specific enumeration dispatchers
@@ -229,7 +229,7 @@ run_service_enum_phase() {
         return 1
     fi
 
-    grep -oP '\d+/(tcp|udp)/open' "$grepable_file" | while read -r entry; do
+    grep -oP '\d+/open/(tcp|udp)' "$grepable_file" | while read -r entry; do
         local port="${entry%%/*}"
         local proto; proto=$(echo "$entry" | cut -d'/' -f2)
         log_info "Dispatching enumerator for $port/$proto..."

@@ -1,4 +1,4 @@
-# Recon
+# Ghost
 
 A modular Bash-based reconnaissance framework for CTFs, Hack The Box, and penetration testing labs.
 
@@ -63,8 +63,8 @@ Supported services include:
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/recon.git
-cd recon
+git clone https://github.com/YOUR_USERNAME/ghost.git
+cd ghost
 ```
 
 Run the installer:
@@ -81,23 +81,23 @@ chmod +x install.sh
 Basic scan:
 
 ```bash
-recon scanme.nmap.org
+ghost scanme.nmap.org
 ```
 
 Interactive shell:
 
 ```bash
-recon
+ghost
 ```
 
 Example options:
 
 ```bash
-recon --udp --vuln scanme.nmap.org
+ghost --udp --vuln scanme.nmap.org
 ```
 
 ```bash
-recon --dns example.com
+ghost --dns example.com
 ```
 
 ---
@@ -109,8 +109,8 @@ Each scan creates its own timestamped directory.
 Example:
 
 ```
-recon_output/
-└── recon_scanme_20260702_120000/
+ghost_output/
+└── ghost_scanme_20260702_120000/
     ├── report.txt
     ├── report.html
     ├── scan.nmap

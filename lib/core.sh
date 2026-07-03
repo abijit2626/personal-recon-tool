@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 # =============================================================================
-# core.sh — shared utilities for recon.sh
+# core.sh — shared utilities for ghost.sh
 # =============================================================================
 
 # Section header for terminal output (global fallback;

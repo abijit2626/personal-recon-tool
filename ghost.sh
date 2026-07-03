@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# recon.sh - Interactive recon shell for CTFs
+# ghost.sh - Interactive Ghost shell for CTFs
 #
 set -uo pipefail
 
@@ -31,16 +31,16 @@ int_handler() { echo -e "\n${YELLOW}[!] Interrupted.${NC}"; cleanup; exit 1; }
 trap int_handler INT TERM
 
 print_banner() {
-    echo -e "${WHITE}⠀⠀⠀⠀⠀⠀⢀⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀${NC}  ${PURPLE} ██▀███  ▓█████  ▄████▄   ▒█████   ███▄    █ ${NC}"
-    echo -e "${WHITE}⠀⠀⠀⠀⠀⢀⣾⣿⡇⠀⠀⠀⠀⠀⢀⣼⡇${NC}  ${PURPLE}▓██ ▒ ██▒▓█   ▀ ▒██▀ ▀█  ▒██▒  ██▒ ██ ▀█   █ ${NC}"
-    echo -e "${WHITE}⠀⠀⠀⠀⠀⣸⣿⣿⡇⠀⠀⠀⠀⣴⣿⣿⠃${NC}  ${PURPLE}▓██ ░▄█ ▒▒███   ▒▓█    ▄ ▒██░  ██▒▓██  ▀█ ██▒${NC}"
-    echo -e "${WHITE}⠀⠀⠀⠀⢠⣿⣿⣿⣇⠀⠀⢀⣾⣿⣿⣿⠀${NC}  ${PURPLE}▒██▀▀█▄  ▒▓█  ▄ ▒▓▓▄ ▄██▒▒██   ██░▓██▒  ▐▌██▒${NC}"
-    echo -e "${WHITE}⠀⠀⠀⣴⣿⣿⣿⣿⣿⣿⣷⣿⣿⣿⣿⡟⠀${NC}  ${PURPLE}░██▓ ▒██▒░▒████▒▒ ▓███▀ ░░ ████▓▒░▒██░   ▓██░${NC}"
-    echo -e "${WHITE}⠀⠀⢰⡿⠉⠀⡜⣿⣿⣿⡿⠿⢿⣿⣿⠃⠀${NC}  ${PURPLE}░ ▒▓ ░▒▓░░░ ▒░ ░░ ░▒ ▒  ░░ ▒░▒░▒░ ░ ▒░   ▒ ▒ ${NC}"
-    echo -e "${WHITE}⠒⠒⠸⣿⣄⡘⣃⣿⣿⡟⢰⠃⠀⢹⣿⡇⠀${NC}  ${PURPLE}  ░▒ ░ ▒░ ░ ░  ░  ░  ▒     ░ ▒ ▒░ ░ ░░   ░ ▒░${NC}"
-    echo -e "${WHITE}⠚⠉⠀⠈⠻⣿⣿⣿⣿⣿⣮⣤⣤⣿⡟⠁⠀${NC}  ${PURPLE}  ░░   ░    ░   ░        ░ ░ ░ ▒     ░   ░ ░ ${NC}"
-    echo -e "${WHITE}⠀⠀⠀⠀⠀⠀⠈⠙⠛⠛⠛⠛⠛⠁⠀⠒⠤${NC}  ${PURPLE}   ░        ░  ░░ ░          ░ ░           ░ ${NC}"
-    echo -e "${WHITE}⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⠀⠀${NC}  ${PURPLE}                ░                            ${NC}"
+    echo -e "${WHITE}  ⠀⠀⠀⠀⠀⠀⢀⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀${NC} ${PURPLE}  ▄████  ██░ ██  ▒█████    ██████ ▄▄▄█████▓${NC}"
+    echo -e "${WHITE}  ⠀⠀⠀⠀⠀⢀⣾⣿⡇⠀⠀⠀⠀⠀⢀⣼⡇${NC} ${PURPLE} ██▒ ▀█▒▓██░ ██▒▒██▒  ██▒▒██    ▒ ▓  ██▒ ▓▒${NC}"
+    echo -e "${WHITE}  ⠀⠀⠀⠀⠀⣸⣿⣿⡇⠀⠀⠀⠀⣴⣿⣿⠃${NC} ${PURPLE}▒██░▄▄▄░▒██▀▀██░▒██░  ██▒░ ▓██▄   ▒ ▓██░ ▒░${NC}"
+    echo -e "${WHITE}  ⠀⠀⠀⠀⢠⣿⣿⣿⣇⠀⠀⢀⣾⣿⣿⣿⠀${NC} ${PURPLE}░▓█  ██▓░▓█ ░██ ▒██   ██░  ▒   ██▒░ ▓██▓ ░ ${NC}"
+    echo -e "${WHITE}  ⠀⠀⠀⣴⣿⣿⣿⣿⣿⣿⣷⣿⣿⣿⣿⡟⠀${NC} ${PURPLE}░▒▓███▀▒░▓█▒░██▓░ ████▓▒░▒██████▒▒  ▒██▒ ░ ${NC}"
+    echo -e "${WHITE}  ⠀⠀⢰⡿⠉⠀⡜⣿⣿⣿⡿⠿⢿⣿⣿⠃⠀${NC} ${PURPLE} ░▒   ▒  ▒ ░░▒░▒░ ▒░▒░▒░ ▒ ▒▓▒ ▒ ░  ▒ ░░   ${NC}"
+    echo -e "${WHITE}  ⠒⠒⠸⣿⣄⡘⣃⣿⣿⡟⢰⠃⠀⢹⣿⡇⠀${NC} ${PURPLE}  ░   ░  ▒ ░▒░ ░  ░ ▒ ▒░ ░ ░▒  ░ ░    ░    ${NC}"
+    echo -e "${WHITE}  ⠚⠉⠀⠈⠻⣿⣿⣿⣿⣿⣮⣤⣤⣿⡟⠁⠀${NC} ${PURPLE}░ ░   ░  ░  ░░ ░░ ░ ░ ▒  ░  ░  ░    ░      ${NC}"
+    echo -e "${WHITE}  ⠀⠀⠀⠀⠀⠀⠈⠙⠛⠛⠛⠛⠛⠁⠀⠒⠤${NC} ${PURPLE}      ░  ░  ░  ░    ░ ░        ░           ${NC}"
+    echo -e "${WHITE}  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⠀⠀${NC} ${PURPLE}                                           ${NC}"
 }
 
 show_usage() {
@@ -90,20 +90,20 @@ check_deps() {
 }
 
 get_output_dir() {
-    # Non-interactive. Always resolves under $HOME/recon_output so it never
-    # depends on (or fails because of) whatever directory recon was launched from.
+    # Non-interactive. Always resolves under $HOME/ghost_output so it never
+    # depends on (or fails because of) whatever directory ghost was launched from.
     local target="$1"
-    local parent_dir="${RECON_HOME:-$HOME/recon_output}"
+    local parent_dir="${GHOST_HOME:-$HOME/ghost_output}"
 
     if ! mkdir -p "$parent_dir" 2>/dev/null; then
         echo -e "${RED}Error:${NC} Could not create base output directory '$parent_dir' (permission denied?)." >&2
-        echo -e "${YELLOW}Tip:${NC} set RECON_HOME to a directory you can write to, e.g. RECON_HOME=~/scans recon <target>" >&2
+        echo -e "${YELLOW}Tip:${NC} set GHOST_HOME to a directory you can write to, e.g. GHOST_HOME=~/scans ghost <target>" >&2
         exit 1
     fi
 
     local timestamp
     timestamp=$(date +"%Y%m%d_%H%M%S")
-    local base="${parent_dir}/recon_${target//\//_}_${timestamp}"
+    local base="${parent_dir}/ghost_${target//\//_}_${timestamp}"
     local candidate="$base"
     local n=2
     # Guard against same-second collisions instead of prompting to overwrite.
@@ -135,7 +135,7 @@ run_scan() {
     local web_ports=()
 
     if [ -z "$outdir" ]; then
-        outdir="recon_${target//\//_}_${timestamp}"
+        outdir="ghost_${target//\//_}_${timestamp}"
     fi
     if [ -d "$outdir" ]; then
         # Non-interactive: never overwrite silently, never prompt. Just pick a
@@ -150,11 +150,11 @@ run_scan() {
     fi
 
     local report="${outdir}/report.txt"
-    TMP_OUT=$(mktemp /tmp/recon_XXXXXX.tmp)
+    TMP_OUT=$(mktemp /tmp/ghost_XXXXXX.tmp)
 
     if ! mkdir -p "$outdir" 2>/dev/null; then
         echo -e "${RED}Error:${NC} Could not create output directory '$outdir' (permission denied?)." >&2
-        echo -e "${YELLOW}Tip:${NC} pass -o/--output <dir> pointing somewhere you can write, or set RECON_HOME." >&2
+        echo -e "${YELLOW}Tip:${NC} pass -o/--output <dir> pointing somewhere you can write, or set GHOST_HOME." >&2
         return 1
     fi
 
@@ -173,7 +173,7 @@ run_scan() {
 
     section() { log ""; log "${BOLD}${CYAN}== $1 ==${NC}"; }
 
-    log "${BOLD}Recon report for: ${target}${NC}"
+    log "${BOLD}Ghost report for: ${target}${NC}"
     log "Generated: $(date)"
     log "Output directory: ${outdir}"
 
@@ -264,7 +264,7 @@ run_scan() {
         [ "$web_ports_found" -eq 0 ] && log "  No HTTP/HTTPS services detected."
     fi
 
-    # ---- Extended phases (recon_ext.sh) ----
+    # ---- Extended phases (ghost_ext.sh) ----
     local nmap_grep="${outdir}/scan.gnmap"
 
     run_service_enum_phase "$target" "$nmap_grep"
@@ -321,7 +321,7 @@ run_scan() {
 interactive_shell() {
     check_deps
     print_banner
-    echo -e "${CYAN}${BOLD}   RECON SHELL${NC} — type ${GREEN}help${NC} for commands"
+    echo -e "${CYAN}${BOLD}   GHOST SHELL${NC} — type ${GREEN}help${NC} for commands"
     echo ""
 
     local target=""
@@ -338,14 +338,14 @@ interactive_shell() {
     local wordlist=""
 
     while true; do
-        echo -ne "${BOLD}recon${NC}${DIM}>${NC} "
+        echo -ne "${BOLD}ghost${NC}${DIM}>${NC} "
         read -r cmd args
         [ -z "$cmd" ] && continue
 
         case "$cmd" in
             help|h|\?)
                 echo -e "${BOLD}Commands:${NC}"
-                echo -e "  ${GREEN}scan${NC} [target]        Run full recon scan"
+                echo -e "  ${GREEN}scan${NC} [target]        Run full Ghost scan"
                 echo -e "  ${GREEN}set${NC}  <option> <val>  Set option (target, ports, timing,"
                 echo -e "                          output, skip-web, skip-ping, verbose,"
                 echo -e "                          udp, vuln, screenshots, dns, wordlist)"
