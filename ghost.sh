@@ -194,6 +194,7 @@ run_scan() {
     fi
 
     local nmap_args=(-sV -T"${timing}" --open -oA "$outdir/scan")
+    $skip_ping && nmap_args+=(-Pn)
     $verbose && nmap_args+=(-v)
     [ -n "$port_range" ] && nmap_args+=(-p "$port_range")
     nmap "${nmap_args[@]}" "$target" > "$TMP_OUT" 2>&1
