@@ -114,8 +114,17 @@ get_output_dir() {
     echo "$candidate"
 }
 
+sanitize_target() {
+    local t="$1"
+    t="${t#http://}"
+    t="${t#https://}"
+    t="${t%%/*}"
+    echo "$t"
+}
+
 run_scan() {
-    local target="$1"
+    local target
+    target=$(sanitize_target "$1")
     local outdir="$2"
     local port_range="$3"
     local timing="$4"
@@ -568,6 +577,7 @@ else
     else
         check_deps
         print_banner
+        local_target=$(sanitize_target "$local_target")
         if [ -z "$local_outdir" ]; then
             resolved_outdir=$(get_output_dir "$local_target")
         else

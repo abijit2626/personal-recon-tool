@@ -1,5 +1,7 @@
 # Output
 ghost_output/
+ghost_*/
+ferox-*.state
 output/
 reports/
 
@@ -16,6 +18,7 @@ reports/
 
 # Temp
 *.tmp
+test_*.sh
 *.swp
 *~
 
